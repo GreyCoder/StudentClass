@@ -216,6 +216,5 @@ int main(void)
     getStudents(Students);
     sortStudents(Students);
     outputStudents(Students);
-    cout << Students.at(0).LetterGrade << endl;
     return 0;
 }
