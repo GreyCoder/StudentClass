@@ -1,11 +1,16 @@
+/*Author:  Israel Cabello
+  Course:  EE 3420
+  Homework: 4
+  Description:  This is a Program to perform the functions as described
+                 in Homework 4*/
 #include <iostream>
 #include <fstream>
 #include <string.h>
 #include <vector>
-#include <math.h>
+
 
 using namespace std;
-/*The following class is used to parse a data file for student Grades*/
+/*Class to use as an entry for a Student Record*/
 class student{
     public:
         char FirstName[30];
@@ -36,6 +41,7 @@ class student{
 
 };
 
+/*Default constructor that takes no input*/
 student::student()
 {
     char temp[] = "";
@@ -49,6 +55,8 @@ student::student()
 
 }
 
+/*constructor that takes in FirstName, LastName, Test1, Test2 and FinalExam.
+    It automatically calculates the CourseScore and LetterGrade*/
 student::student(char FN[30], char LN[30], float T1, float T2, float FE)
 {
     float min, max;
@@ -74,6 +82,7 @@ student::student(char FN[30], char LN[30], float T1, float T2, float FE)
 
 }
 
+/*method to recalculate a student score*/
 void student::calculate()
 {
     if(Test1 > Test2)
@@ -92,6 +101,7 @@ void student::calculate()
         LetterGrade = 'F';
 }
 
+/*Destructor for student class*/
 student::~student()
 {
     char Null[] = "\0";
@@ -104,6 +114,7 @@ student::~student()
     LetterGrade = '\0';
 }
 
+/*Copy Constructor for student class*/
 student::student(const student& p)
 {
     strcpy(FirstName, p.FirstName);
@@ -115,6 +126,7 @@ student::student(const student& p)
     LetterGrade = p.LetterGrade;
 }
 
+/*Overloaded Operators for student class*/
 bool operator==(student &s1, student &s2)
 {
     return (
@@ -158,6 +170,8 @@ bool operator<=(student &s1, student &s2)
 
 }
 
+/*The follwing function will populate a vector of student from a file
+    Input: vector<student>*/
 void getStudents(vector<student> &v1)
 {
     char FirstName[30], LastName[30];
@@ -176,6 +190,8 @@ void getStudents(vector<student> &v1)
     }
 }
 
+/*The follwing function will sort the student records
+    Input: vector<student>*/
 void sortStudents(vector<student> &v1)
 {
     student temp;
@@ -197,6 +213,8 @@ void sortStudents(vector<student> &v1)
     }
 }
 
+/*The follwing function will output the Student Record to a file
+    Input: vector<student>*/
 void outputStudents(vector<student> &v1)
 {
     std::ofstream outfile("studentsoutput.txt");
