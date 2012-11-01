@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string.h>
 #include <vector>
-#include <ctime>
 #include <math.h>
 
 using namespace std;
@@ -216,5 +215,6 @@ int main(void)
     getStudents(Students);
     sortStudents(Students);
     outputStudents(Students);
+    Students.clear();
     return 0;
 }
