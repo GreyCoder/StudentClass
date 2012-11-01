@@ -5,7 +5,7 @@
 #include <math.h>
 
 using namespace std;
-
+/*The following class is used to parse a data file for student Grades*/
 class student{
     public:
         char FirstName[30];
@@ -103,6 +103,7 @@ student::~student()
     CourseScore = 0;
     LetterGrade = '\0';
 }
+
 student::student(const student& p)
 {
     strcpy(FirstName, p.FirstName);
@@ -159,17 +160,17 @@ bool operator<=(student &s1, student &s2)
 
 void getStudents(vector<student> &v1)
 {
-    char FN[30], LN[30];
-    float T1, T2, FE;
+    char FirstName[30], LastName[30];
+    float Test1, Test2, FinalExam;
     student temp;
     std::ifstream infile("students.txt");
-    while(infile >> FN >> LN >> T1 >> T2 >> FE)
+    while(infile >> FirstName >> LastName >> Test1 >> Test2 >> FinalExam)
     {
-        strcpy(temp.FirstName, FN);
-        strcpy(temp.LastName, LN);
-        temp.Test1 = T1;
-        temp.Test2 = T2;
-        temp.FinalExam = FE;
+        strcpy(temp.FirstName, FirstName);
+        strcpy(temp.LastName, LastName);
+        temp.Test1 = Test1;
+        temp.Test2 = Test2;
+        temp.FinalExam = FinalExam;
         temp.calculate();
         v1.push_back(temp);
     }
